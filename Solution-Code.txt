@@ -1,0 +1,27 @@
+private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    // Calculate and display total unique stock names
+    showTotalStockNames();
+}  
+
+private void showTotalStockNames() {
+    // Use a HashSet to store unique stock names
+    Set<String> uniqueStockNames = new HashSet<>();
+    
+    // Assume jTable1 is the table you are using
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+    // Loop through the rows of the table
+    for (int i = 0; i < model.getRowCount(); i++) {
+        // Get stock name from the column (e.g., column 0)
+        String stockName = model.getValueAt(i, 0).toString().trim();
+        
+        // Add to the set (ensures uniqueness)
+        uniqueStockNames.add(stockName);
+    }
+
+    // Display the total count of unique stock names
+    int total = uniqueStockNames.size();
+    
+    // Assuming lblTotalStock is a JLabel where the total is displayed
+    lblTotalStock.setText("Total Unique Stock Names: " + total);
+}
